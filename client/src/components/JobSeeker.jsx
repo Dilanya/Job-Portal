@@ -9,6 +9,8 @@ import {
   Autocomplete
 } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   fullName: Yup.string().required('Full Name is required'),
@@ -27,6 +29,8 @@ const validationSchema = Yup.object({
 });
 
 const JobSeekerForm = () => {
+
+  const navigate = useNavigate();
 
   const skillOptions = [
     'JavaScript',
@@ -59,9 +63,18 @@ const JobSeekerForm = () => {
       cv: null,
     },
     validationSchema: validationSchema,
-    onSubmit: values => {
-      // Handle form submission here
-      console.log(values);
+    onSubmit: async values => {
+      try {
+        const response = await axios.post('http://localhost:3001/api/jobseekers', values);
+  
+        console.log('Job seeker created successfully:', response.data);
+        alert("Registered Successfully");
+        navigate('/login')
+        
+        formik.resetForm();
+      } catch (error) {
+        console.error('Error creating job seeker:', error);
+      }
     }
   });
 

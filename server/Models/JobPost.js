@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const jobPostSchema = new mongoose.Schema({
-  title: {
+  jobTitle: {
     type: String,
     required: true
   },
-  type: {
+  jobType: {
     type: [String], 
     required: true
   },
@@ -18,7 +18,7 @@ const jobPostSchema = new mongoose.Schema({
   location: String,
   jobProfile: String,
   candidateProfile: String,
-  methodForApply: String,
+  applyMethod: String,
   createdAt: {
     type: Date,
     default: Date.now

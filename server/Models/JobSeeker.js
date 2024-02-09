@@ -18,8 +18,9 @@ const jobSeekerSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  location: [String],
+  jobType: [String],
   skillSet: [String],
+  cv: File,
   createdAt: {
     type: Date,
     default: Date.now

@@ -17,7 +17,7 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     
-    navigate('/landing')
+    navigate('/')
     e.preventDefault();
     console.log(`Submitted: ${email}, ${password}`);
   };

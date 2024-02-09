@@ -8,7 +8,7 @@ import {
   Autocomplete,
   Container
 } from '@mui/material';
-import { TextareaAutosize  } from '@mui/base/TextareaAutosize';
+import axios from 'axios';
 
 const validationSchema = Yup.object({
   jobTitle: Yup.string().required('Job Title is required'),
@@ -54,9 +54,18 @@ const CreateJobPostForm = () => {
       introduction: '',
     },
     validationSchema: validationSchema,
-    onSubmit: values => {
-      // Handle form submission here
-      console.log(values);
+    onSubmit: async values => {
+      try {
+        const response = await axios.post('http://localhost:3001/api/jobposts', values);
+  
+        console.log('Job post created successfully:', response.data);
+        alert("Job Post Created Successfully");
+
+        formik.resetForm();
+      } catch (error) {
+        
+        console.error('Error creating job post:', error);
+      }
     }
   });
 
