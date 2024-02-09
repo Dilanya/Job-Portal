@@ -4,12 +4,21 @@ import SearchBox from './SearchBox';
 
 const LandingPage = () => {
   return (
-    <div>
+    <div style={{
+      //backgroundImage: `url(${backgroundImage})`
+      backgroundColor:'hsla(215,0%,100%,1)',
+    backgroundImage:
+    `radial-gradient(at 80% 0%, hsla(189,83%,45%,1) 0px, transparent 50%),
+    radial-gradient(at 19% 98%, hsla(22,100%,77%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 1%, hsla(242,100%,70%,1) 0px, transparent 50%),
+    radial-gradient(at 98% 98%, hsla(343,100%,76%,1) 0px, transparent 50%)`,
       
-      <Container sx={{
-          mt: { xs: 5, sm: 5, md: 14 },
-          
-        }}>
+      height: '91vh',
+      display: 'flex',
+      alignItems: 'center'
+    }}>
+      
+      <Container >
         <Typography variant="h2" align="center" color="#1c2125" gutterBottom>
           Welcome to JobNexa
         </Typography>

@@ -20,10 +20,11 @@ const RegisterScreen = () => {
   <div style={{
     //backgroundImage: `url(${backgroundImage})`
     background: 'linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%)',
-    
-    height: '100vh',
     display: 'flex',
-    alignItems: 'center'
+    justifyContent: 'center',
+    alignItems: 'center', 
+    height: '91vh',
+    flexWrap: 'wrap'
   }}>  
     <Container component="main" sx={{
       mt: { xs: 2, sm: 2 },
@@ -34,10 +35,9 @@ const RegisterScreen = () => {
       borderRadius: '8px',
       boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
       padding: '20px',
-      maxWidth: { xs: '90%', sm: '80%', md: '60%', lg:'50%' },
+      maxWidth: { xs: '100%', sm: '80%', md: '60%', lg:'50%' },
       width: '100%', 
       margin: 'auto',
-      height: 'auto'
       
       
       

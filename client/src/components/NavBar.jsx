@@ -12,6 +12,14 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AnimationIcon from '@mui/icons-material/Animation';
+import LandingPage from './LandingPage';
+import UserType from './Register';
+import LoginForm from './Login';
+import CreateJobPostForm from './JobPost';
+
+import { NavLink , BrowserRouter,
+    Routes,
+    Route, } from 'react-router-dom';
 
 const pages = ['Find a Job', 'Post a Job', 'Register' , 'Login'];
 const settings = ['Profile',  'Logout'];
@@ -19,6 +27,7 @@ const settings = ['Profile',  'Logout'];
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -29,6 +38,7 @@ function NavBar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+    
   };
 
   const handleCloseUserMenu = () => {
@@ -36,6 +46,7 @@ function NavBar() {
   };
 
   return (
+    <BrowserRouter>
     <AppBar position="static" sx={{backgroundColor: "#1c2125"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -44,7 +55,7 @@ function NavBar() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -88,11 +99,34 @@ function NavBar() {
                 
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              
+                <MenuItem  >
+                <NavLink to="/find-job" style={({ isActive }) => ({
+                                color: isActive
+                                    ? "#9fc1e6"
+                                    : "#1c2125",
+                                marginRight: 20,
+                                textDecoration: 'none'
+                            })} >Find a Job</NavLink> </MenuItem>
+               <MenuItem><NavLink to="/new-job" style={({ isActive }) => ({
+                                color: isActive
+                                    ? "#9fc1e6"
+                                    : "#1c2125",
+                                marginRight: 20,
+                                textDecoration: 'none'})}>Post a Job</NavLink> </MenuItem>
+               <MenuItem><NavLink to="/register" style={({ isActive }) => ({
+                                color: isActive
+                                    ? "#9fc1e6"
+                                    : "#1c2125",
+                                marginRight: 20,
+                                textDecoration: 'none'})}>Register</NavLink> </MenuItem>
+               <MenuItem><NavLink to="/login" style={({ isActive }) => ({
+                                color: isActive
+                                    ? "#9fc1e6"
+                                    : "#1c2125",
+                                marginRight: 20,
+                                textDecoration: 'none'})}>Login</NavLink> </MenuItem>
+             
             </Menu>
           </Box>
           <AnimationIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -100,7 +134,7 @@ function NavBar() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -115,16 +149,46 @@ function NavBar() {
             JobNexa
           </Typography>
           <Box sx={{ flexGrow: 1,  justifyContent: 'flex-end', display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            
+              <div>
+               <NavLink to="/find-job" style={({ isActive }) => ({
+                                color: isActive
+                                    ? "#9fc1e6"
+                                    : "white",
+                                marginRight: 20,
+                                textDecoration: 'none'
+                            })}>Find a Job</NavLink> 
+              </div>
+              <div>
+               <NavLink to="/new-job" style={({ isActive }) => ({
+                                color: isActive
+                                    ? "#9fc1e6"
+                                    : "white",
+                                    marginRight: 20,
+                                    textDecoration: 'none'
+                            })}>Post a Job</NavLink> 
+              </div>
+              <div
+                >
+               <NavLink to="/register" style={({ isActive }) => ({
+                                color: isActive
+                                    ? "#9fc1e6"
+                                    : "white",
+                                    marginRight: 20,
+                                    textDecoration: 'none'
+                            })}>Register</NavLink> 
+              </div>
+              <div>
+               <NavLink to="/login" style={({ isActive }) => ({
+                                color: isActive
+                                    ? "#9fc1e6"
+                                    : "white",
+                                    marginRight: 20,
+                                    textDecoration: 'none'
+                            })}>Login</NavLink> 
+              </div>
           </Box>
+          
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -158,6 +222,16 @@ function NavBar() {
         </Toolbar>
       </Container>
     </AppBar>
+
+    <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginForm/>} />
+          <Route path="/register" element={<UserType />} />
+          <Route path="/new-job" element={<CreateJobPostForm  />} />
+          <Route path="/find-job" element={<CreateJobPostForm  />} />
+    </Routes>
+    </BrowserRouter>
+
   );
 }
 export default NavBar;

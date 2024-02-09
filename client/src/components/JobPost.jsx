@@ -61,10 +61,23 @@ const CreateJobPostForm = () => {
   });
 
   return (
-    <div>
+    <div style={{
+      //backgroundImage: `url(${backgroundImage})`
+      backgroundColor: 'hsla(267, 55%, 83%, 1)',
+    backgroundImage: `radial-gradient(at 74% 93%, hsla(149, 99%, 75%, 1) 0px, transparent 50%),
+      radial-gradient(at 71% 57%, hsla(306, 90%, 77%, 1) 0px, transparent 50%),
+      radial-gradient(at 79% 61%, hsla(75, 83%, 69%, 1) 0px, transparent 50%),
+      radial-gradient(at 51% 2%, hsla(203, 79%, 72%, 1) 0px, transparent 50%),
+      radial-gradient(at 14% 64%, hsla(182, 98%, 79%, 1) 0px, transparent 50%)`,
+      
+      height: 'auto',
+      display: 'flex',
+      alignItems: 'center',
+      overflow: 'auto'
+    }}>
         <Container component="main" sx={{
       mt: { xs: 2, sm: 2 },
-      mb: { xs: 2, sm: 2 },
+      mb: { xs: 2, sm: 2 ,lg: 10 },
       backgroundColor: 'rgba(255, 255, 255, 0.8)',
       backdropFilter: 'blur(10px)',
       border: '1px solid rgba(255, 255, 255, 0.125)',
@@ -74,11 +87,7 @@ const CreateJobPostForm = () => {
       maxWidth: { xs: '90%', sm: '80%', md: '60%', lg:'50%' },
       width: '100%', 
       margin: 'auto',
-      height: 'auto'
-      
-      
-      
-  }}>
+    }}>
       <Typography variant="h4" align="center" gutterBottom>
         Create Job Post
       </Typography>
