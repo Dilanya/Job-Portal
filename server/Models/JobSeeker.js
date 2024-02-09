@@ -20,7 +20,6 @@ const jobSeekerSchema = new mongoose.Schema({
   },
   jobType: [String],
   skillSet: [String],
-  cv: File,
   createdAt: {
     type: Date,
     default: Date.now

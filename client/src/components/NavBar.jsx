@@ -16,6 +16,7 @@ import LandingPage from './LandingPage';
 import UserType from './Register';
 import LoginForm from './Login';
 import CreateJobPostForm from './JobPost';
+import JobPostList from './FindJobs';
 
 import { NavLink , BrowserRouter,
     Routes,
@@ -228,7 +229,7 @@ function NavBar() {
           <Route path="/login" element={<LoginForm/>} />
           <Route path="/register" element={<UserType />} />
           <Route path="/new-job" element={<CreateJobPostForm  />} />
-          <Route path="/find-job" element={<CreateJobPostForm  />} />
+          <Route path="/find-job" element={<JobPostList  />} />
     </Routes>
     </BrowserRouter>
 

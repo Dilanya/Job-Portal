@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import{ TextField , Typography} from '@mui/material';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   companyName: Yup.string().required('Company Name is required'),
@@ -15,6 +17,8 @@ const validationSchema = Yup.object({
 });
 
 const EmployerForm = () => {
+  const navigate = useNavigate();
+  
   const formik = useFormik({
     initialValues: {
       companyName: '',
@@ -25,9 +29,18 @@ const EmployerForm = () => {
       website: ''
     },
     validationSchema: validationSchema,
-    onSubmit: values => {
-      // Handle form submission here
-      console.log(values);
+    onSubmit: async values => {
+      try {
+        const response = await axios.post('http://localhost:3001/api/companies', values);
+  
+        console.log('Your Company created successfully:', response.data);
+        alert("Registered Successfully");
+        navigate('/login')
+        
+        formik.resetForm();
+      } catch (error) {
+        console.error('Error creating Company:', error);
+      }
     }
   });
 
